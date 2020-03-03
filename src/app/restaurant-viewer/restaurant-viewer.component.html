@@ -1,0 +1,10 @@
+<div class="restaurant-card">
+    <p><strong>Id</strong> : {{restaurant.id}}</p>
+    <p><strong>Nom</strong> : {{restaurant.name}}</p>
+    <p><strong>Adresse</strong> : {{restaurant.address}}</p>
+    <p><strong>E-mail</strong> : {{restaurant.mailAddress}}</p>
+    <p><strong>Numéro téléphone</strong> : {{restaurant.phone}}</p>
+    <p *ngIf="restaurantCommandCount">
+        <strong>Nombre de commande(s)</strong> : {{restaurantCommandCount}}
+    </p>
+</div>

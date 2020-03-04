@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RestaurantViewerModule } from './restaurant-viewer/restaurant-viewer.module';
+import { RestaurantFormModule } from './restaurant-form/restaurant-form.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RestaurantViewerModule } from './restaurant-viewer/restaurant-viewer.mo
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RestaurantViewerModule
+    RestaurantViewerModule,
+    RestaurantFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

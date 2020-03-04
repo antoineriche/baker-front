@@ -1,21 +1,43 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <ul>
-    <li *ngFor="let command of commands">
-      <span (click)="getByDate(command.date)">
-        {{command.date}}
-      </span> 
-      {{command.count}} 
-      <span (click)="getRestaurant(command.restaurantId)">
-        [{{command.restaurantId}}]
-      </span>
-    </li>
-  </ul>
+<div style="width: 100%;">
+  <div class="mid-width">
+    Commands
+    <ul>
+      <li *ngFor="let command of commands">
+        <span (click)="getByDate(command.date)">
+          {{command.date}}
+        </span> 
+        {{command.count}} 
+        <span (click)="getRestaurant(command.restaurantId)">
+          [{{command.restaurantId}}]
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mid-width">
+    Restaurants
+    <ul>
+      <li *ngFor="let restaurant of restaurants">
+        <span (click)="getByDate(command.date)">
+          [{{restaurant.id}}] {{restaurant.name}}
+        </span> 
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div style="width: 100%;">
 
   <app-restaurant-viewer *ngIf="restaurant" 
     [restaurant]="restaurant"
     [restaurantCommandCount]="getCommandsCount(restaurant.id)">
   </app-restaurant-viewer>
+
+  <br/>
+
+  <app-restaurant-form 
+    (restaurantPosted)="postRestaurant($event)">
+  </app-restaurant-form>
 
   <br/>
 

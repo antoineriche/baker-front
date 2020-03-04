@@ -15,6 +15,10 @@ export class RestaurantService {
     return <Observable<any[]>> this.http.get(this.uri);
   }
 
+  saveRestaurant(restaurant: any): Observable<any[]> {
+    return <Observable<any[]>> this.http.post(this.uri, restaurant);
+  }
+
   getRestaurantById(restaurantId: number): Observable<any> {
     return <Observable<any>> this.http.get(this.uri + '/' + restaurantId);
   }

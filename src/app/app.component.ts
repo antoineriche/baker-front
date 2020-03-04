@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   
   title = 'baker-project';
   commands: any[];
+  restaurants: any[];
   restaurant: {};
   datedCommands: {};
   datedLocatedCommands: {};
@@ -21,11 +22,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCommands();
+    this.getRestaurants();
   }
 
   private getCommands() {
     this.commandService.getCommands().subscribe(
       data => this.commands = data,
+      err =>  console.error('error', err)
+    );
+  }
+
+  private getRestaurants() {
+    this.restaurantService.getRestaurants().subscribe(
+      data => this.restaurants = data,
       err =>  console.error('error', err)
     );
   }
@@ -56,5 +65,14 @@ export class AppComponent implements OnInit {
       data => this.datedLocatedCommands = {restaurantId: restaurantId, date: date, commands: data},
       err => console.error('error', err)
     )
+  }
+
+  postRestaurant(restaurant: any): void {
+    console.log('restaurant', restaurant);
+    this.restaurantService.saveRestaurant(restaurant).subscribe(
+      data => console.log('response', data),
+      error => console.error('error from ws', error),
+      () => this.getRestaurants()
+    );
   }
 }

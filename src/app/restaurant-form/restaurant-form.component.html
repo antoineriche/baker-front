@@ -1,0 +1,23 @@
+<form [formGroup]="restaurantForm" class="restaurant-form">
+
+    <div>
+        <input type="text" class="form-control col-4" 
+            placeholder="Enter the file name" formControlName="name">
+    </div>
+    <div>
+        <input type="text" class="form-control col-4" 
+            placeholder="Enter the postal address" formControlName="address">
+    </div>
+    <div>
+        <input type="text" class="form-control col-4" 
+            placeholder="Enter the mail address" formControlName="mailAddress">
+    </div>
+    <div>
+        <input type="text" class="form-control col-4" 
+            placeholder="Enter the phone" formControlName="phone">
+    </div>
+
+    <div>
+        <button (click)="postRestaurant('tcheck')" [disabled]="restaurantForm.invalid">Envoyer</button>
+    </div>
+</form>

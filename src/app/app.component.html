@@ -1,6 +1,6 @@
-<div style="width: 100%;">
+<div class="list-container">
   <div class="mid-width">
-    Commands
+    <h2>Commands</h2>
     <ul>
       <li *ngFor="let command of commands">
         <span (click)="getByDate(command.date)">
@@ -15,29 +15,35 @@
   </div>
 
   <div class="mid-width">
-    Restaurants
+    <h2>Restaurants</h2>
     <ul>
       <li *ngFor="let restaurant of restaurants">
-        <span (click)="getByDate(command.date)">
+        <span (click)="getRestaurant(restaurant.id)">
           [{{restaurant.id}}] {{restaurant.name}}
         </span> 
       </li>
     </ul>
   </div>
-</div>
-
-<div style="width: 100%;">
 
   <app-restaurant-viewer *ngIf="restaurant" 
     [restaurant]="restaurant"
     [restaurantCommandCount]="getCommandsCount(restaurant.id)">
   </app-restaurant-viewer>
 
+</div>
+
+<div style="width: 100%;">
+
   <br/>
 
   <app-restaurant-form 
     (restaurantPosted)="postRestaurant($event)">
   </app-restaurant-form>
+
+  <app-command-form *ngIf="restaurants" [restaurants]="restaurants" 
+    (commandPosted)="postCommand($event)">
+
+  </app-command-form>
 
   <br/>
 

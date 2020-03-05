@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ICommand } from '../models/command';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,28 @@ export class CommandService {
 
   constructor(private http: HttpClient) { }
 
-  getCommands(): Observable<any[]> {
-    return <Observable<any[]>> this.http.get(this.uri);
+  getCommands(): Observable<ICommand[]> {
+    return <Observable<ICommand[]>> this.http.get(this.uri);
   }
 
-  getCommandsByRestaurant(restaurantId: number): Observable<any[]> {
-    return <Observable<any[]>> this.http.get(this.uri + '?restaurant=' + restaurantId);
+  getCommandById(commandId: number): Observable<ICommand> {
+    return <Observable<ICommand>> this.http.get(this.uri + '/' + commandId);
   }
 
-  getCommandsByDate(date: string): Observable<any[]> {
-    return <Observable<any[]>> this.http.get(this.uri + '?date=' + date);
+  getCommandsByRestaurant(restaurantId: number): Observable<ICommand[]> {
+    return <Observable<ICommand[]>> this.http.get(this.uri + '?restaurant=' + restaurantId);
+  }
+
+  saveCommand(command: any): Observable<ICommand> {
+    return <Observable<ICommand>> this.http.post(this.uri, command);
+  }
+
+  getCommandsByDate(date: string): Observable<ICommand[]> {
+    return <Observable<ICommand[]>> this.http.get(this.uri + '?date=' + date);
   }
 
   getCommandsByDateAndRestaurant(date: string, restaurantId: number): Observable<any[]> {
-    return <Observable<any[]>> this.http.get(this.uri + '?date=' + date + '&restaurant=' + restaurantId);
+    return <Observable<ICommand[]>> this.http.get(this.uri + '?date=' + date + '&restaurant=' + restaurantId);
   }
 
   

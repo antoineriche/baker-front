@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommandService } from './service/command.service';
 import { RestaurantService } from './service/restaurant.service';
+import { ICommand } from './models/command';
+import { IRestaurant } from './models/restaurant';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,8 @@ import { RestaurantService } from './service/restaurant.service';
 export class AppComponent implements OnInit {
   
   title = 'baker-project';
-  commands: any[];
-  restaurants: any[];
+  commands: ICommand[];
+  restaurants: IRestaurant[];
   restaurant: {};
   datedCommands: {};
   datedLocatedCommands: {};
@@ -73,6 +75,15 @@ export class AppComponent implements OnInit {
       data => console.log('response', data),
       error => console.error('error from ws', error),
       () => this.getRestaurants()
+    );
+  }
+
+  postCommand(command: ICommand): void {
+    console.log('command', command);
+    this.commandService.saveCommand(command).subscribe(
+      data => console.log('response', data),
+      error => console.error('error from ws', error),
+      () => this.getCommands()
     );
   }
 }

@@ -1,0 +1,23 @@
+<form [formGroup]="commandForm" class="command-form">
+
+    <div>
+        <select (change)="onRestaurantSelected($event)" formControlName="restaurantId">
+            <option value="" selected disabled>Pick a restaurant</option>
+            <option *ngFor="let restaurant of restaurants;" [value]="restaurant.id">
+                {{restaurant.name}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <input type="number" class="form-control col-4" 
+            placeholder="Enter the count" formControlName="count">
+    </div>
+    <div>
+        <input type="date" class="form-control col-4" 
+            placeholder="Enter the date" formControlName="date">
+    </div>
+   
+    <div>
+        <button (click)="postCommand()" [disabled]="commandForm.invalid">Envoyer</button>
+    </div>
+</form>

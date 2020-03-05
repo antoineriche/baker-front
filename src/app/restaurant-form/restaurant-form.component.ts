@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { IRestaurant } from '../models/restaurant';
 
 @Component({
   selector: 'app-restaurant-form',
@@ -11,7 +12,7 @@ export class RestaurantFormComponent implements OnInit {
   private restaurantForm: FormGroup;
   
   @Output()
-  restaurantPosted = new EventEmitter<any>();
+  restaurantPosted = new EventEmitter<IRestaurant>();
 
   constructor(private formBuilder: FormBuilder) { }
 

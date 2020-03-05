@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IRestaurant } from '../models/restaurant';
 
 @Component({
   selector: 'app-restaurant-viewer',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RestaurantViewerComponent implements OnInit {
 
   @Input()
-  readonly restaurant: any;
+  readonly restaurant: IRestaurant;
 
   @Input()
   readonly restaurantCommandCount: number;

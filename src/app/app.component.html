@@ -1,21 +1,25 @@
 <div class="list-container">
   <div class="mid-width">
-    <h2>Commands</h2>
-    <ul>
-      <li *ngFor="let command of commands">
-        <span (click)="getByDate(command.date)">
-          {{command.date}}
-        </span> 
-        {{command.count}} 
-        <span (click)="getRestaurant(command.restaurantId)">
-          [{{command.restaurantId}}]
-        </span>
-      </li>
-    </ul>
+    <h2>
+      Commands <span class="badge badge-secondary">{{commands.length}}</span>
+    </h2>
+    <!-- <div class="card" style="width: 18rem;"> -->
+      <ul>
+        <li *ngFor="let command of commands">
+          <span (click)="getByDate(command.date)">
+            {{command.date}}
+          </span> 
+          {{command.count}} 
+          <span (click)="getRestaurant(command.restaurantId)">
+            [{{command.restaurantId}}]
+          </span>
+        </li>
+      </ul>
+    <!-- </div> -->
   </div>
 
   <div class="mid-width">
-    <h2>Restaurants</h2>
+    <h2>Restaurants <span class="badge badge-secondary">{{restaurants.length}}</span></h2>
     <ul>
       <li *ngFor="let restaurant of restaurants">
         <span (click)="getRestaurant(restaurant.id)">

@@ -1,23 +1,32 @@
 <form [formGroup]="restaurantForm" class="restaurant-form">
 
-    <div>
-        <input type="text" class="form-control col-4" 
-            placeholder="Enter the file name" formControlName="name">
-    </div>
-    <div>
-        <input type="text" class="form-control col-4" 
-            placeholder="Enter the postal address" formControlName="address">
-    </div>
-    <div>
-        <input type="text" class="form-control col-4" 
-            placeholder="Enter the mail address" formControlName="mailAddress">
-    </div>
-    <div>
-        <input type="text" class="form-control col-4" 
-            placeholder="Enter the phone" formControlName="phone">
+    <div class="form-group">
+        <label for="restaurantName">Name</label>
+        <input id="restaurantName" type="text" class="form-control" 
+            formControlName="name" placeholder="Enter the name">
     </div>
 
-    <div>
-        <button (click)="postRestaurant()" [disabled]="restaurantForm.invalid">Envoyer</button>
+    <div class="form-group">
+        <label for="restaurantAddress">Adresse</label>
+        <input id="restaurantAddress" type="text" class="form-control" 
+            formControlName="address" placeholder="Enter the postal address">
     </div>
+
+    <div class="form-group">
+        <label for="restaurantMail">Adresse mail</label>
+        <input id="restaurantMail" type="email" class="form-control" 
+            formControlName="mailAddress" placeholder="Enter the mail address">
+    </div>
+
+    <div class="form-group">
+        <label for="restaurantPhone">Téléphone</label>
+        <input id="restaurantPhone" type="phone" class="form-control" 
+            formControlName="phone" placeholder="Enter the phone">
+    </div>
+
+    <button class="btn btn-primary" (click)="postRestaurant()" 
+        [disabled]="restaurantForm.invalid">
+        Envoyer
+    </button>
+    
 </form>

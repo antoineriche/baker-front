@@ -32,5 +32,5 @@ export class RestaurantFormComponent implements OnInit {
 
   postRestaurant() {
     this.restaurantPosted.emit(this.restaurantForm.value);
-  }
+  } 
 }

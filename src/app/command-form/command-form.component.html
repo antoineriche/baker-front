@@ -1,23 +1,30 @@
 <form [formGroup]="commandForm" class="command-form">
 
-    <div>
-        <select (change)="onRestaurantSelected($event)" formControlName="restaurantId">
+    <div class="form-group">
+        <label for="commandRestaurant">Restaurant</label>
+        <select class="form-control" id="commandRestaurant"
+            (change)="onRestaurantSelected($event)" formControlName="restaurantId">
             <option value="" selected disabled>Pick a restaurant</option>
             <option *ngFor="let restaurant of restaurants;" [value]="restaurant.id">
                 {{restaurant.name}}
             </option>
         </select>
     </div>
-    <div>
-        <input type="number" class="form-control col-4" 
-            placeholder="Enter the count" formControlName="count">
+
+    <div class="form-group">
+        <label for="commandCount">Quantité</label>
+        <input id="commandCount" type="number" class="form-control" 
+            formControlName="count" placeholder="Enter the count">
     </div>
-    <div>
-        <input type="date" class="form-control col-4" 
-            placeholder="Enter the date" formControlName="date">
+
+    <div class="form-group">
+        <label for="commandDate">Date</label>
+        <input id="commandDate" type="date" class="form-control" 
+            formControlName="date" placeholder="Enter the date">
     </div>
    
-    <div>
-        <button (click)="postCommand()" [disabled]="commandForm.invalid">Envoyer</button>
-    </div>
+    <button class="btn btn-primary" (click)="postCommand()" 
+        [disabled]="commandForm.invalid">
+        Envoyer
+    </button>
 </form>

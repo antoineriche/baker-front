@@ -12,8 +12,8 @@ import { IRestaurant } from './models/restaurant';
 export class AppComponent implements OnInit {
   
   title = 'baker-project';
-  commands: ICommand[];
-  restaurants: IRestaurant[];
+  commands: ICommand[] = [];
+  restaurants: IRestaurant[] = [];
   restaurant: {};
   datedCommands: {};
   datedLocatedCommands: {};

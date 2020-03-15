@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestaurantFormComponent } from './restaurant-form.component';
+import { CommandFormDialogComponent } from './command-form-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    RestaurantFormComponent
+    CommandFormDialogComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
-  ], 
-  exports: [
-    RestaurantFormComponent
+  ],
+  entryComponents: [
+    CommandFormDialogComponent
   ]
 })
-export class RestaurantFormModule { }
+export class CommandFormDialogModule { }

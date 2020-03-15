@@ -1,0 +1,41 @@
+<h5>
+    {{ isAnUpdate() ? 'Modification' : 'Création de commande' }}
+</h5>
+
+<form [formGroup]="commandForm" class="command-form">
+    
+    <div class="form-group">
+        <label for="commandRestaurant">Restaurant</label>
+        <select class="form-control" id="commandRestaurant" formControlName="restaurantId">
+            <option value="" selected disabled>Pick a restaurant</option>
+            <option *ngFor="let restaurant of restaurants;" [value]="restaurant.id">
+                {{restaurant.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="commandCount">Quantité</label>
+        <input id="commandCount" type="number" class="form-control" 
+            formControlName="count" placeholder="Enter the count">
+    </div>
+
+    <div class="form-group">
+        <label for="commandDate">Date</label>
+        <input id="commandDate" type="date" class="form-control" 
+            formControlName="date" placeholder="Enter the date">
+    </div>
+   
+    <div>
+        <button class="btn btn-danger" (click)="cancel()">
+            Annuler
+        </button>
+        <button class="btn btn-primary" (click)="postCommand()" 
+            [disabled]="commandForm.invalid">
+            Envoyer
+        </button>
+    </div>
+
+    
+</form>
+

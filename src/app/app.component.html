@@ -1,33 +1,32 @@
-<div class="list-container">
-  <div class="mid-width">
-    <h2>
-      Commands <span class="badge badge-secondary">{{commands.length}}</span>
-    </h2>
-    <!-- <div class="card" style="width: 18rem;"> -->
-      <ul>
-        <li *ngFor="let command of commands">
-          <span (click)="getByDate(command.date)">
-            {{command.date}}
-          </span> 
-          {{command.count}} 
-          <span (click)="getRestaurant(command.restaurantId)">
-            [{{command.restaurantId}}]
-          </span>
-        </li>
-      </ul>
-    <!-- </div> -->
-  </div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Baker Project</h1>
+    <span class="menu-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <div class="mid-width">
-    <h2>Restaurants <span class="badge badge-secondary">{{restaurants.length}}</span></h2>
-    <ul>
-      <li *ngFor="let restaurant of restaurants">
-        <span (click)="getRestaurant(restaurant.id)">
-          [{{restaurant.id}}] {{restaurant.name}}
-        </span> 
-      </li>
-    </ul>
-  </div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="'/restaurants'"> Restaurants </a>
+      <a mat-list-item [routerLink]="'/commands'"> Commandes </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh; margin: 2em;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- <div class="list-container">
 
   <app-restaurant-viewer *ngIf="restaurant" 
     [restaurant]="restaurant"
@@ -67,4 +66,4 @@
 
 </div>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->

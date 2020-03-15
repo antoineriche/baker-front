@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ICommand } from '../models/command';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-command-form',
@@ -17,7 +18,8 @@ export class CommandFormComponent implements OnInit {
   @Input()
   readonly restaurants: any[];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<CommandFormComponent>) { }
 
   ngOnInit() {
     this.initForm();
@@ -27,17 +29,22 @@ export class CommandFormComponent implements OnInit {
   private initForm(): void {
     this.commandForm = this.formBuilder.group({ 
       restaurantId: new FormControl('', [Validators.required]),
-      count: new FormControl(0, [Validators.required]),
+      count: new FormControl(0, [Validators.required, Validators.min(1)]),
       date: new FormControl('', [Validators.required])
     });
   }
 
   postCommand() {
-    this.commandPosted.emit(this.commandForm.value);
+    console.log('to be posted', this.commandForm.value);
+    this.dialogRef.close(this.commandForm.value);
   }
 
   onRestaurantSelected(event: any) {
-    this.commandForm.value['restaurantId'] = event.target.value;
+    // this.commandForm.value['restaurantId'] = event.target.value;
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 
 }

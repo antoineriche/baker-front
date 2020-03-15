@@ -24,7 +24,8 @@ export class CommandService {
     return <Observable<ICommand[]>> this.http.get(this.uri + '?restaurant=' + restaurantId);
   }
 
-  saveCommand(command: any): Observable<ICommand> {
+  saveCommand(command: ICommand): Observable<ICommand> {
+    console.log('posting 2: ', command);
     return <Observable<ICommand>> this.http.post(this.uri, command);
   }
 

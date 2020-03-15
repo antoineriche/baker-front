@@ -1,0 +1,16 @@
+<div class="add-command">
+    <button class="btn btn-primary btn-sm" color="primary" (click)="saveNewCommand()">
+        Saisir une nouvelle commande
+    </button>
+    <span class="badge badge-secondary command-count">
+        {{commands.length}}
+    </span>
+</div>
+
+<ul>
+    <li *ngFor="let command of commands" (click)="editCommand(command)">
+    <span>{{command.date}}</span> 
+    {{command.count}} 
+    <span>[{{command.restaurantId}}]</span>
+    </li>
+</ul>

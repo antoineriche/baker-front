@@ -1,16 +1,22 @@
 <div class="add-command">
-    <button class="btn btn-primary btn-sm" color="primary" (click)="saveNewCommand()">
+    <button mat-raised-button class="btn-sm" 
+        color="primary" (click)="saveNewCommand()">
         Saisir une nouvelle commande
     </button>
-    <span class="badge badge-secondary command-count">
+    <span class="badge badge-secondary command-count" (click)="openSnackBar()">
         {{commands.length}}
     </span>
 </div>
 
-<ul>
-    <li *ngFor="let command of commands" (click)="editCommand(command)">
-    <span>{{command.date}}</span> 
-    {{command.count}} 
-    <span>[{{command.restaurantId}}]</span>
-    </li>
-</ul>
+<div class="grid">
+    <mat-list class="col-sm-3">
+        <mat-list-item *ngFor="let command of commands">
+            <h3 matLine (click)="editCommand(command)"> {{command.date}} </h3>
+            <p matLine>
+                <span> {{getRestaurantLabel(command.restaurantId)}} </span>
+                <span> - {{command.count}} </span>
+            </p>
+            <fa-icon [icon]="faTrashAlt" (click)="deleteCommand(command)"></fa-icon>
+        </mat-list-item>
+    </mat-list>
+</div>

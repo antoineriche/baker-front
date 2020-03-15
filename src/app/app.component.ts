@@ -4,6 +4,11 @@ import { RestaurantService } from './service/restaurant.service';
 import { ICommand } from './models/command';
 import { IRestaurant } from './models/restaurant';
 
+import { faCoffee, 
+  faMusic, 
+  faMicrophoneAlt, 
+  faEdit } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +17,12 @@ import { IRestaurant } from './models/restaurant';
 export class AppComponent implements OnInit {
   
   title = 'baker-project';
+  faCoffee = faCoffee;
+  faMusic = faMusic;
+  faMicrophoneAlt = faMicrophoneAlt;
+  faEdit = faEdit;
+
+
   commands: ICommand[] = [];
   restaurants: IRestaurant[] = [];
   restaurant: {};

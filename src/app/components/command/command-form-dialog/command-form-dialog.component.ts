@@ -11,7 +11,8 @@ export interface CommandFormData {
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './command-form-dialog.component.html'
+  templateUrl: './command-form-dialog.component.html',
+  styleUrls: ['./command-form-dialog.component.scss']
 })
 export class CommandFormDialogComponent implements OnInit {
   
@@ -40,6 +41,7 @@ export class CommandFormDialogComponent implements OnInit {
 /* Init restaurant form. */
 private initForm(): void {
   this.commandForm = this.formBuilder.group({ 
+    id: new FormControl(this.command ? this.command.id : null),
     restaurantId: new FormControl(this.command ? this.command.restaurantId : '', [Validators.required]),
     count: new FormControl(this.command ? this.command.count : 0, [Validators.required, Validators.min(1)]),
     date: new FormControl(this.command ? this.command.date : '', [Validators.required])
@@ -61,5 +63,4 @@ private initForm(): void {
   postCommand() {
     this.dialogRef.close(this.commandForm.value);
   }
-
 }

@@ -52,7 +52,7 @@ export class CommandComponent implements OnInit {
         if (result) {
           console.log('posting: ', result);
           this.commandService.saveCommand(result).subscribe(
-            (data: ICommand) => console.log('resp', data),
+            () => this.getCommands(),
             err => console.error('err', err),
             () => console.log('entonces...')
           );

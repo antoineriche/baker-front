@@ -6,7 +6,7 @@
     
     <div class="form-group">
         <label for="commandRestaurant">Restaurant</label>
-        <select class="form-control" id="commandRestaurant" formControlName="restaurantId">
+        <select [attr.disabled]="isAnUpdate() ? 'disbaled' : null"  class="form-control" id="commandRestaurant" formControlName="restaurantId">
             <option value="" selected disabled>Pick a restaurant</option>
             <option *ngFor="let restaurant of restaurants;" [value]="restaurant.id">
                 {{restaurant.name}}

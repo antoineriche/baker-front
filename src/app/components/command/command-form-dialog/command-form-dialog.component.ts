@@ -40,9 +40,9 @@ export class CommandFormDialogComponent implements OnInit {
 /* Init restaurant form. */
 private initForm(): void {
   this.commandForm = this.formBuilder.group({ 
-    restaurantId: new FormControl('', [Validators.required]),
-    count: new FormControl(0, [Validators.required, Validators.min(1)]),
-    date: new FormControl('', [Validators.required])
+    restaurantId: new FormControl(this.command ? this.command.restaurantId : '', [Validators.required]),
+    count: new FormControl(this.command ? this.command.count : 0, [Validators.required, Validators.min(1)]),
+    date: new FormControl(this.command ? this.command.date : '', [Validators.required])
   });
 }
 

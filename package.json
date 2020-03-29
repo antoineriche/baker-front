@@ -32,7 +32,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "angular-font-awesome": "^3.1.2",
     "angular-material": "^1.1.21",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.4.1",
     "bootstrap4": "0.0.1-security",
     "bootswatch": "^4.4.1",
     "font-awesome": "^4.7.0",

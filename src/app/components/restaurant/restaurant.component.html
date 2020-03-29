@@ -1,12 +1,70 @@
-<h2>Restaurants <span class="badge badge-secondary">{{restaurants.length}}</span></h2>
-<ul>
-    <li *ngFor="let restaurant of restaurants">
-    <span (click)="getRestaurant(restaurant.id)">
-        [{{restaurant.id}}] {{restaurant.name}}
-    </span> 
-    </li>
-</ul>
+<div class="add-restaurant">
+    <button mat-raised-button class="btn-sm" 
+        color="primary" (click)="saveNewRestaurant()">
+        Saisir un nouveau restaurant
+    </button>
+    <span class="badge badge-secondary restaurant-count" (click)="openSnackBar()">
+        {{restaurantRows.length}}
+    </span>
+</div>
 
-<!-- <app-restaurant-form-dialog>
+<div class="col-sm-9 pull-left">
+    <div *ngFor="let row of restaurantRows" class="row">
+        <div *ngFor="let restaurant of row" class="col-sm-4" style="padding: 10px;">
+            <mat-card class="restaurant-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="baker-image"></div>
+                    <mat-card-title tyle="word-break: break-all">{{restaurant.name}}</mat-card-title>
+                    <mat-card-subtitle>{{restaurant.address}}</mat-card-subtitle>
+                </mat-card-header>
+    
+                <!-- <img mat-card-image src="https://media-cdn.tripadvisor.com/media/photo-s/17/8f/74/f8/son.jpg" alt="Photo of a Shiba Inu"> -->
+    
+                <mat-card-content>
+                    <!-- <p> 
+                        {{restaurant.description != null ? restaurant.description : 'No description available'}}
+                    </p> -->
+                    <p>
+                        <fa-icon [icon]="faMailBulk" class="faIcon"></fa-icon>{{restaurant.mailAddress}}
+                        <br/>
+                        <fa-icon [icon]="faPhone" class="faIcon"></fa-icon>{{restaurant.phone}}
+                    </p>
+                </mat-card-content>
 
-</app-restaurant-form-dialog> -->
+                <mat-card-footer>
+                    <button mat-button (click)="editRestaurant(restaurant)">
+                        EDIT
+                    </button>
+                    <button mat-button (click)="deleteRestaurant(restaurant)">
+                        DELETE
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="col-sm-3 pull-right" style="padding-left: 20px;">
+    <mat-card class="example-card" >
+        <mat-card-header>
+        <div mat-card-avatar class="baker-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p> 
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+        </mat-card-actions>
+        <mat-card-footer style="background-color: rebeccapurple;">
+            Tehcks
+        </mat-card-footer>
+    </mat-card>
+</div> -->

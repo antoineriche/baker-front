@@ -1,0 +1,61 @@
+<h4>
+    {{ isAnUpdate() ? 'Modification' : 'Nouveau restaurant' }}
+</h4>
+
+<form [formGroup]="restaurantForm" class="restaurant-form">
+
+    <input type="hidden" formControlName="id"/>
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter the name" type="text"
+                formControlName="name">
+        </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Enter the postal address" type="text"
+                formControlName="address">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Adresse email</mat-label>
+            <input matInput placeholder="Enter the mail address" type="email"
+                formControlName="mailAddress">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Téléphone</mat-label>
+            <input matInput placeholder="Enter the phone" type="tel"
+                formControlName="phone">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Enter the description" type="text"
+                formControlName="description">
+            </textarea>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button mat-raised-button class="btn-sm" color="warn" (click)="cancel()">
+            Annuler
+        </button>
+
+        <button mat-raised-button class="btn-sm" color="primary" 
+            (click)="postRestaurant()" [disabled]="restaurantForm.invalid">
+            Envoyer
+        </button>
+    </div>
+    
+</form>
+

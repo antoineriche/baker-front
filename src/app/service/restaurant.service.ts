@@ -23,4 +23,12 @@ export class RestaurantService {
   getRestaurantById(restaurantId: number): Observable<IRestaurant> {
     return <Observable<IRestaurant>> this.http.get(this.uri + '/' + restaurantId);
   }
+
+  updateRestaurant(restaurantId: number, restaurant: IRestaurant): Observable<IRestaurant> {
+    return <Observable<IRestaurant>> this.http.put(this.uri + '/' + restaurantId, restaurant);
+  }
+
+  deleteRestaurant(restaurantId: number): Observable<IRestaurant> {
+    return <Observable<IRestaurant>> this.http.delete(this.uri + '/' + restaurantId);
+  }
 }

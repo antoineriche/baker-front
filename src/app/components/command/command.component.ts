@@ -1,11 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommandService } from 'src/app/service/command.service';
 import { ICommand } from 'src/app/models/command';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { CommandFormDialogComponent } from './command-form-dialog/command-form-dialog.component';
 import { IRestaurant } from 'src/app/models/restaurant';
 import { RestaurantService } from 'src/app/service/restaurant.service';
-import * as moment from 'moment';
 import { faPause, faPlay, faStop, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
@@ -18,7 +17,6 @@ export class CommandComponent implements OnInit {
 
   commands: ICommand[] = [];
   restaurants: IRestaurant[] = [];
-  currentDialogRef: any;
 
   private readonly faTrashAlt = faTrashAlt;
   private readonly faPlay = faPlay;
@@ -82,7 +80,7 @@ export class CommandComponent implements OnInit {
   }
 
   editCommand(command: ICommand) {
-    this.currentDialogRef =this.dialog.open(CommandFormDialogComponent, {
+    this.dialog.open(CommandFormDialogComponent, {
       data: { command: command, restaurants: this.restaurants },
     })
     .afterClosed().subscribe(
